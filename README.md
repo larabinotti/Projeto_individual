@@ -4,7 +4,10 @@ Um projeto web desenvolvido com o objetivo de auxiliar na compreensão e no enfr
 
 ---
 
-🎓 **Projeto acadêmico — SPTech**
+🎓 **Projeto acadêmico — São Paulo Tech School**
+<br>
 👩‍💻 **Autora:** Lara Willi Binotti
+<br>
+=======
+🎓 **Projeto acadêmico — SPTech**
 📌 **Trello:** [clique aqui](https://trello.com/b/PEXDfWpH/entre-o-agora-e-o-talvez-projeto-individual)
-
