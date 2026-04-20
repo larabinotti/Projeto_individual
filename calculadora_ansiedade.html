@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Calculadora de Pensamentos</title>
+
+<style>
+body {
+    font-family: 'Optima', sans-serif;
+    background-color: #F5F1E9;
+    color: #2E2E2E;
+    text-align: center;
+    padding: 30px;
+}
+
+.container {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+input {
+    width: 70%;
+    padding: 10px;
+}
+
+button {
+    padding: 10px;
+    background-color: #e5c7c5;
+    border: none;
+    cursor: pointer;
+}
+
+ul {
+    text-align: left;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+    <h1 class="titulo">Entre o Agora e o Talvez</h1>
+
+<style>
+.titulo {
+    font-family: Optima, Candara, "Segoe UI", sans-serif;
+}
+</style>
+    <p>Digite seus pensamentos:</p>
+
+    <input id="inputPensamento" placeholder="Ex: vou fracassar">
+    <button onclick="adicionar()">Adicionar</button>
+
+    <h3>Seus pensamentos:</h3>
+    <ul id="lista"></ul>
+
+    <button onclick="analisar()">Analisar</button>
+
+    <div id="resultado"></div>
+</div>
+
+<script>
+let pensamentos = [];
+
+let palavrasNegativas = [
+    "fracassar",
+    "não",
+    "nunca",
+    "medo",
+    "errar",
+    "impossível",
+    "péssima",
+    "horrível",
+    "ruim",
+    "chata",
+    "incopetente",
+    "idiota",
+
+];
+
+function adicionar() {
+    let input = document.getElementById("inputPensamento");
+    let texto = input.value;
+
+    if (texto === "") {
+        alert("Digite algo!");
+        return;
+    }
+
+    pensamentos.push(texto);
+
+    atualizarLista();
+
+    input.value = "";
+}
+
+function atualizarLista() {
+    let lista = document.getElementById("lista");
+    lista.innerHTML = "";
+
+    for (let i = 0; i < pensamentos.length; i++) {
+        lista.innerHTML += `<li>${pensamentos[i]}</li>`;
+    }
+}
+
+function analisar() {
+    let negativos = 0;
+
+    for (let i = 0; i < pensamentos.length; i++) {
+        let frase = pensamentos[i].toLowerCase();
+
+        for (let j = 0; j < palavrasNegativas.length; j++) {
+            if (frase.includes(palavrasNegativas[j])) {
+                negativos++;
+                break;
+            }
+        }
+    }
+
+    let positivos = pensamentos.length - negativos;
+
+    let mensagem = "";
+
+    if (negativos > positivos) {
+        mensagem = "Você está mais no 'talvez' do que no 'agora'";
+    } else {
+        mensagem = "Você está mais no 'agora' do que no 'talvez'";
+    }
+
+    document.getElementById("resultado").innerHTML = `
+        <p>Pensamentos negativos: ${negativos}</p>
+        <p>Pensamentos positivos: ${positivos}</p>
+        <b>${mensagem}<b>
+    `;
+}
+</script>
+
+</body>
+</html>
