@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crie sua Conta</title>
+    <link rel="stylesheet" href="stylecadastro.css" />
+</head>
+
+<body>
+    <button class="btn-voltar" onclick="window.location.href='index.html'">← Voltar</button>
+
+    <div class="wrap">
+
+        <div class="left">
+            <h1>Crie sua Conta</h1>
+            <p>Comece sua jornada de Autoconhecimento</p>
+
+            <div class="campo">
+                <label for="nome">Nome completo</label>
+                <input id="nome" type="text" placeholder="Como podemos te chamar?" />
+            </div>
+
+            <div class="campo">
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="seu@email.com" />
+            </div>
+
+            <div class="campo">
+                <label for="senha">Senha</label>
+                <input id="ipt_senha" type="password" placeholder="Mínimo 8 caracteres"
+                    oninput="verificarForca(this.value)" />
+                <div class="barra-forca">
+                    <div class="seg" id="s1"></div>
+                    <div class="seg" id="s2"></div>
+                    <div class="seg" id="s3"></div>
+                    <div class="seg" id="s4"></div>
+                </div>
+            </div>
+
+            <div class="linha2">
+                <div class="campo">
+                    <label for="idade">Idade</label>
+                    <input id="idade" type="number" placeholder="Ex: 25" min="13" max="99" />
+                </div>
+                <div class="campo">
+                    <label for="objetivo">Objetivo</label>
+                    <select id="objetivo">
+                        <option value="" disabled selected>Escolher...</option>
+                        <option>Reduzir ansiedade</option>
+                        <option>Melhorar o sono</option>
+                        <option>Autoconhecimento</option>
+                        <option>Apoio emocional</option>
+                        <option>Outro</option>
+                    </select>
+                </div>
+            </div>
+
+            <button onclick="criarConta()">Criar minha conta</button>
+
+            <p class="login-link">Já tem conta? <a href="loginpage.html">Entrar</a></p>
+        </div>
+
+        <div class="right"></div>
+
+    </div>
+   
+    <script>
+        function verificarForca() {
+            let senha = ipt_senha.value;
+            let pontuacao = 0;
+
+            if (senha.length >= 4) pontuacao++;
+            if (senha.length >= 8) pontuacao++;
+            if (senha.length >= 12) pontuacao++;
+            if (senha.length >= 16) pontuacao++;
+
+            let cores = ['#c4846a', '#c4a86a', '#7a6475', '#8a9e7a'];
+
+            for (let i = 1; i <= 4; i++) {
+                let segmento = document.getElementById('s' + i);
+                if (i <= pontuacao) {
+                    segmento.style.background = cores[i - 1];
+                } else {
+                    segmento.style.background = '#ddd5d9';
+                }
+            }
+        }
+
+        function criarConta() {
+            let nome = document.getElementById('nome').value.trim();
+            let email = document.getElementById('email').value.trim();
+            let senha = document.getElementById('senha').value;
+            let idade = document.getElementById('idade').value;
+            let objetivo = document.getElementById('objetivo').value;
+
+            if (!nome || !email || !senha || !idade || !objetivo) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+            if (senha.length < 8) {
+                alert('A senha deve ter no mínimo 8 caracteres.');
+                return;
+            }
+
+            alert('Conta criada com sucesso! Bem-vinda 🌸');
+        }
+    </script>
+
+</body>
+
+</html>

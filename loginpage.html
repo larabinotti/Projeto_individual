@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faça seu login</title>
+    <link rel="stylesheet" href="stylelogin.css" />
+</head>
+<body>
+    <button class="btn-voltar" onclick="window.location.href='index.html'">← Voltar</button>
+
+    <div class="wrap">
+        
+        <div class="side-image left-side"></div>
+
+        
+        <div class="left">
+            <h1>Login</h1>
+            <p>Bem vinda(o) de volta!</p>
+
+            <div class="campo">
+                <label for="email">Email</label>
+                <input id="email" type="text" placeholder="seu@email.com" />
+            </div>
+
+            <div class="campo">
+                <label for="senha">Senha</label>
+                <input id="senha" type="password" placeholder="Mínimo 8 caracteres" />
+            </div>
+
+            <button onclick="Entrar()">Entrar</button>
+
+            <p class="login-link"> 
+                Não possui conta? Junte-se a nós! <a href="cadastro.html"">Criar conta</a>
+            </p>
+        </div>
+
+        <div class="side-image right-side"></div> 
+    </div>
+</body>
+</html>
