@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Emocional | Entre o Agora e o Depois</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <section class="dashboard">
+
+        <div class="topo-dashboard">
+
+            <span class="section-tag">
+                ✿ Dashboard emocional
+            </span>
+
+            <h1>
+                Seu agora em números
+            </h1>
+
+            <p>
+                Uma visualização simples dos seus registros emocionais, mostrando padrões de pensamento,
+                humor da semana e sua constância no diário.
+            </p>
+
+        </div>
+
+        <!-- KPIS -->
+
+        <section class="cards-resumo">
+
+            <div class="card-mini">
+
+                <h3>Pensamentos registrados</h3>
+
+                <div class="valor" id="totalPensamentos"></div>
+
+                <p>
+                    pensamentos escritos esta semana
+                </p>
+
+            </div>
+
+            <div class="card-mini">
+
+                <h3>Emoção predominante</h3>
+
+                <div class="valor" id="emocaoPredominante"></div>
+
+                <p>
+                    emoção mais presente nos registros
+                </p>
+
+            </div>
+
+            <div class="card-mini">
+
+                <h3>Sequência emocional</h3>
+
+                <div class="valor" id="sequenciaDias"></div>
+
+                <p>
+                    dias seguidos usando o diário
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- GRÁFICOS -->
+
+        <section class="grid-dashboard">
+
+            <div class="grafico-card">
+
+                <h2>Humor da semana</h2>
+
+                <canvas id="graficoHumor"></canvas>
+
+            </div>
+
+            <div class="grafico-card">
+
+                <h2>Tipos de pensamentos</h2>
+
+                <canvas id="graficoPensamentos"></canvas>
+
+            </div>
+
+        </section>
+
+        <!-- ANÁLISE -->
+
+        <section class="resumo-emocional">
+
+            <h2>
+                Seu agora de hoje
+            </h2>
+
+            <p id="analiseEmocional"></p>
+
+        </section>
+
+    </section>
+
+
+
+    <script>
+
+        // DADOS MOCKADOS
+
+        let dadosDashboard = {
+
+            totalPensamentos: ,
+
+            emocaoPredominante: ,
+
+            sequenciaDias: ,
+
+            humorMedio: ,
+
+            humorSemana: [],
+
+            tiposPensamentos: []
+
+        };
+
+
+        // PREENCHENDO KPIS
+
+        document.getElementById("totalPensamentos").innerHTML =
+            dadosDashboard.totalPensamentos;
+
+        document.getElementById("emocaoPredominante").innerHTML =
+            dadosDashboard.emocaoPredominante;
+
+        document.getElementById("sequenciaDias").innerHTML =
+            dadosDashboard.sequenciaDias + " dias";
+
+
+const graficoHumor =
+    document.getElementById('graficoHumor');
+
+new Chart(graficoHumor, {
+
+    type: 'line',
+
+    data: {
+
+        labels: [
+            'Seg',
+            'Ter',
+            'Qua',
+            'Qui',
+            'Sex',
+            'Sáb',
+            'Dom'
+        ],
+
+        datasets: [{
+
+            label: 'Humor da semana',
+
+            data: dadosDashboard.humorSemana,
+
+            borderColor: '#7e6275',
+
+            backgroundColor: '#c9b6c6'
+
+        }]
+
+    }
+
+});
+
+
+
+
+
+       const graficoPensamentos =
+    document.getElementById('graficoPensamentos');
+
+new Chart(graficoPensamentos, {
+
+    type: 'doughnut',
+
+    data: {
+
+        labels: [
+            'Ansiosos',
+            'Neutros',
+            'Positivos'
+        ],
+
+        datasets: [{
+
+            data: dadosDashboard.tiposPensamentos,
+
+            backgroundColor: [
+                '#7e6275',
+                '#c9b6c6',
+                '#eaddea'
+            ]
+
+        }]
+
+    }
+
+});
+
+
+
+        // LÓGICA DA ANÁLISE EMOCIONAL
+
+        let mensagem = "";
+
+        if (dadosDashboard.humorMedio <= 4) {
+
+            mensagem =
+                "Hoje sua mente parece mais sobrecarregada emocionalmente. Talvez seja um bom momento para desacelerar e lembrar que você não precisa resolver tudo hoje.";
+
+        }
+
+        else if (dadosDashboard.humorMedio <= 7) {
+
+            mensagem =
+                "Você parece estar tentando equilibrar muitas coisas ao mesmo tempo. Tente não transformar cada pensamento em uma urgência.";
+
+        }
+
+        else {
+
+            mensagem =
+                "Sua escrita demonstra mais leveza emocional hoje. Continue cultivando momentos que fazem você se sentir presente no agora.";
+
+        }
+
+
+        document.getElementById("analiseEmocional").innerHTML =
+            mensagem;
+
+    </script>
+
+</body>
+
+</html>

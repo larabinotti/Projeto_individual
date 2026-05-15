@@ -5,8 +5,11 @@
 }
 
 body {
-    font-family: sans-serif;
-    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Cormorant Garamond', serif;
 }
 
 .wrap {
@@ -15,6 +18,7 @@ body {
     min-height: 100vh;
 }
 
+/* LADO ESQUERDO */
 
 .left {
     background: #eeebe8;
@@ -29,16 +33,16 @@ body {
 .left h1 {
     font-size: 38px;
     color: #3d2e38;
-    font-family: Georgia;
     margin-bottom: 6px;
 }
 
-.left>p {
+.left > p {
     font-size: 14px;
     color: #9e8a98;
-
     margin-bottom: 36px;
 }
+
+/* CAMPOS */
 
 .campo {
     margin-bottom: 18px;
@@ -65,18 +69,22 @@ select {
     font-size: 14px;
     color: #3d2e38;
     outline: none;
+    transition: all 0.2s ease;
+    font-family: 'Poppins', sans-serif;
 }
 
 input:focus,
 select:focus {
+    transform: scale(1.02);
     border-color: #7a6475;
-    box-shadow: 0 0 0 3px rgba(122, 100, 117, 0.12);
+    box-shadow: 0 0 0 4px rgba(122, 100, 117, 0.15);
 }
 
 input::placeholder {
     color: #c4b1bf;
 }
 
+/* BARRA DE FORÇA */
 
 .barra-forca {
     display: flex;
@@ -89,15 +97,18 @@ input::placeholder {
     flex: 1;
     border-radius: 2px;
     background: #ddd5d9;
-    transition: background 0.3s;
+    transition: background 0.3s ease;
 }
 
+/* LINHA DUPLA */
 
 .linha2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
 }
+
+/* BOTÃO PRINCIPAL */
 
 button {
     width: 100%;
@@ -111,11 +122,54 @@ button {
     cursor: pointer;
     margin-top: 24px;
     letter-spacing: 0.05em;
+    transition: all 0.25s ease;
+    font-family: 'Poppins', sans-serif;
 }
 
 button:hover {
     background: #5e4d59;
+    transform: translateY(-2px);
 }
+
+button:active {
+    transform: translateY(0);
+}
+
+/* BOTÃO VOLTAR */
+
+.botao-voltar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+    width: auto;
+    height: auto;
+    margin-top: 0;
+
+    background-color: rgba(255, 255, 255, 0.85);
+    color: #7a6475;
+
+    border: 1px solid #d8cdd8;
+    padding: 8px 16px;
+
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+
+    cursor: pointer;
+    z-index: 20;
+    backdrop-filter: blur(4px);
+
+    transition: all 0.3s ease;
+}
+
+.botao-voltar:hover {
+    background-color: white;
+    transform: scale(1.03);
+}
+
+/* LOGIN */
 
 .login-link {
     text-align: center;
@@ -131,72 +185,14 @@ button:hover {
 }
 
 .login-link a:hover {
-    cursor: pointer;
-    position: relative;
-    z-index: 10;
     text-decoration: underline;
 }
 
+/* LADO DIREITO */
 
 .right {
     background-color: #c4b1bf;
-}
-
-.right {
-    background-color: #c4b1bf;
-    background-image: url('foto.png');
+    background-image: url('imagem_cadastro4.png');
     background-size: cover;
     background-position: center;
 }
-
-.btn-voltar {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background: none;
-    border: none;
-    color: #7a6475;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 600;
-    width: auto;
-    margin-top: 0;
-    outline: none;
-}
-
-.btn-voltar:hover {
-    text-decoration: underline;
-    text-decoration: underline;
-    background: none;
-}
-
-.btn-voltar:active {
-    background: none;
-}
-
-input {
-    transition: all 0.2s ease;
-}
-
-input:focus {
-    transform: scale(1.02);
-    border-color: #7a6475;
-    box-shadow: 0 0 0 4px rgba(122, 100, 117, 0.15);
-}
-
-button {
-    transition: all 0.25s ease;
-}
-
-button:hover {
-    transform: translateY(-2px);
-}
-
-button:active {
-    transform: translateY(0);
-}
-.segmento {
-    transition: background 0.3s ease;
-}
-
-/*uso do for*/

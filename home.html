@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entre o Agora e o Depois</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="home.css">
+    <script src="home.js"></script>
+</head>
+
+<body>
+
+    <section class="hero">
+
+        <nav>
+            <div class="logo">
+                <span>❋</span>
+                <h2>Entre o Agora e Depois</h2>
+            </div>
+
+            <ul>
+                <li>Início</li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="artigos.html">Artigos</a></li>
+                <li><a href="logindiario.html">Seu Diário</a></li>
+            </ul>
+
+
+            <a href="loginpage.html" class="btn-login">
+                Entrar
+            </a>
+        </nav>
+
+
+        <div class="hero-content">
+
+            <div class="left">
+
+                <p class="mini-title">
+                    Um espaço seguro de autoconhecimento
+                </p>
+
+                <h1>
+                    Escreva.<br>
+                    Respire.<br>
+                    Se reencontre.
+                </h1>
+
+                <p class="description">
+                    Um espaço acolhedor para compreender seus pensamentos e perceber como a
+                    ansiedade pode influenciar suas decisões diárias.
+                </p>
+
+                <div class="buttons">
+
+                    <button class="primary" onclick="window.location.href='cadastro.html'">
+                        Cadastre-se
+                    </button>
+
+                    <button class="secondary">
+                        Saiba mais
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="right">
+
+                <div class="image-card"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="cards">
+
+        <div class="card">
+            <div class="icon">✎</div>
+
+            <h3>Escrita livre</h3>
+
+            <p>
+                Organize pensamentos e sentimentos sem julgamentos.
+            </p>
+        </div>
+
+
+        <div class="card">
+            <div class="icon">♡</div>
+
+            <h3>Autocuidado diário</h3>
+
+            <p>
+                Um espaço acolhedor com ferramentas de autocuidado e compreensão emocional.
+            </p>
+        </div>
+
+
+        <div class="card">
+            <div class="icon">☾</div>
+
+            <h3>Ambiente acolhedor</h3>
+
+            <p>
+                Um espaço tranquilo para desacelerar e respirar.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="quote-section">
+
+        <div class="quote-block">
+
+            <blockquote>
+                "Durante anos, achei que minhas escolhas eram minhas.
+                Só depois entendi que a ansiedade tinha um assento permanente
+                na mesa das minhas decisões."
+            </blockquote>
+
+            <cite>
+                — Lara Binotti, idealizadora do site
+            </cite>
+
+        </div>
+
+    </section>
+
+
+    <br><br><br><br><br>
+
+
+    <section class="articles-section">
+
+        <div class="section-inner">
+
+            <span class="section-tag">
+                ✿ leituras recentes
+            </span>
+
+            <h2>
+                Do diário <em>para o texto</em>
+            </h2>
+
+            <p class="section-lead">
+                Escrevo sobre experiências, ansiedade, escolhas e autoconhecimento.
+                Estes são os textos mais recentes.
+            </p>
+
+
+            <div class="articles-grid">
+
+                <a class="article-card" href="artigos.html">
+
+                    <span class="article-tag">
+                        autoconhecimento
+                    </span>
+
+                    <h3>
+                        Ansiedade na época dos vestibulares: como lidar?
+                    </h3>
+
+                    <div class="article-meta">
+                        <span>2 mai 2026</span>
+                        <span>ler →</span>
+                    </div>
+
+                </a>
+
+
+                <a class="article-card" href="artigos.html">
+
+                    <span class="article-tag">
+                        relacionamentos
+                    </span>
+
+                    <h3>
+                        A ansiedade que me fez permanecer em relações que me machucavam
+                    </h3>
+
+                    <div class="article-meta">
+                        <span>18 abr 2026</span>
+                        <span>ler →</span>
+                    </div>
+
+                </a>
+
+
+                <a class="article-card" href="artigos.html">
+
+                    <span class="article-tag">
+                        autoconhecimento
+                    </span>
+
+                    <h3>
+                        O dia em que percebi que minha voz interior era ansiedade, não intuição
+                    </h3>
+
+                    <div class="article-meta">
+                        <span>5 abr 2026</span>
+                        <span>ler →</span>
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="calc-section">
+
+        <div class="calc-container">
+
+            <div class="calc-text">
+
+                <span class="section-tag">
+                    ✿ ferramenta emocional
+                </span>
+
+                <h2>
+                    Entre o agora <em>e o depois</em>
+                </h2>
+
+                <p>
+                    Escreva pensamentos que estão passando pela sua mente
+                    e veja qual voz está falando mais alto:
+                    você ou a ansiedade.
+                </p>
+
+            </div>
+
+
+            <div class="calc-box">
+
+                <input id="inputPensamento" type="text" placeholder="Ex: Vou fracassar">
+
+                <button onclick="adicionar()">
+                    Adicionar pensamento
+                </button>
+
+
+                <ul id="lista"></ul>
+
+
+                <button class="analisar-btn" onclick="analisar()">
+                    Analisar pensamentos
+                </button>
+
+                <div id="resultado"></div>
+
+                <br>
+
+                <p class="login-link">
+                    Quer ter acesso a mais ferramentas como essa?
+                    <a href="cadastro.html">Criar conta</a>
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>

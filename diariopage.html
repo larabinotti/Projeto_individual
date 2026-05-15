@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Diário</title>
+
+    <link rel="stylesheet" href="stylediario.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <section class="diario-page">
+
+        <a href="home.html" class="voltar">← Voltar</a>
+
+        <div class="diario-container">
+
+            <div class="diario-texto">
+                <span class="tag">seu espaço</span>
+
+                <h1>Escreva seus pensamentos</h1>
+
+                <p>
+                    Um lugar calmo para registrar o que está passando pela sua mente
+                    e observar seus sentimentos com mais carinho.
+                </p>
+            </div>
+
+            <div class="diario-card">
+                <label for="ipt_pensamento">O que você está pensando agora?</label>
+
+                <textarea 
+                    id="ipt_pensamento"
+                    placeholder="Digite aqui seus pensamentos..."
+                ></textarea>
+
+                <button onclick="salvarPensamento()">Salvar pensamento</button>
+
+                <div id="lista_pensamentos"></div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <script>
+        let pensamentos = [];
+
+        function salvarPensamento() {
+            let pensamento = ipt_pensamento.value.trim();
+
+            if (pensamento == "") {
+                alert("Digite um pensamento antes de salvar.");
+                return;
+            }
+
+            pensamentos.push(pensamento);
+
+            lista_pensamentos.innerHTML = "";
+
+            for (let i = 0; i < pensamentos.length; i++) {
+                lista_pensamentos.innerHTML += `
+                    <div class="pensamento-card">
+                        <p>${pensamentos[i]}</p>
+                    </div>
+                `;
+            }
+
+            ipt_pensamento.value = "";
+        }
+    </script>
+
+</body>
+
+</html>

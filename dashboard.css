@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+
+    background:
+        linear-gradient(rgba(247, 243, 242, 0.88), rgba(247, 243, 242, 0.88)),
+        url('Design sem nome.png');
+
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+
+    color: #4b2d3b;
+    overflow-x: hidden;
+}
+
+.dashboard {
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+    padding: 35px 55px 70px;
+}
+
+/* TOPO */
+
+.topo-dashboard {
+    margin-bottom: 40px;
+}
+
+.section-tag {
+    background: rgba(140, 112, 135, 0.15);
+    color: #7e6275;
+
+    display: inline-block;
+    padding: 9px 18px;
+    border-radius: 999px;
+
+    margin-bottom: 22px;
+    font-size: 14px;
+}
+
+.topo-dashboard h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 70px;
+    line-height: 0.95;
+    margin-bottom: 22px;
+    font-weight: 600;
+}
+
+.topo-dashboard p {
+    font-size: 17px;
+    color: #6e5664;
+    line-height: 1.8;
+    max-width: 760px;
+}
+
+/* KPIS */
+
+.cards-resumo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-bottom: 30px;
+}
+
+.card-mini {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+
+    border-radius: 28px;
+    padding: 26px;
+
+    box-shadow: 0 15px 35px rgba(73, 42, 61, 0.08);
+    transition: 0.3s ease;
+}
+
+.card-mini:hover {
+    transform: translateY(-4px);
+}
+
+.card-mini h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 27px;
+    margin-bottom: 8px;
+    color: #4b2d3b;
+}
+
+.valor {
+    font-size: 34px;
+    font-weight: 600;
+    color: #7e6275;
+    margin-bottom: 6px;
+}
+
+.card-mini p {
+    color: #8c7087;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* GRÁFICOS */
+
+.grid-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin-bottom: 30px;
+}
+
+.grafico-card {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+
+    border-radius: 30px;
+    padding: 28px;
+
+    box-shadow: 0 15px 35px rgba(73, 42, 61, 0.08);
+}
+
+.grafico-card h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    color: #4b2d3b;
+    margin-bottom: 18px;
+}
+
+canvas {
+    max-height: 270px;
+}
+
+/* RESUMO */
+
+.resumo-emocional {
+    background: #f3edf5;
+    border: 1px solid #d8c8d7;
+
+    border-radius: 30px;
+    padding: 38px 45px;
+
+    text-align: center;
+    margin-top: 35px;
+}
+
+.resumo-emocional h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    margin-bottom: 16px;
+    color: #4b2d3b;
+}
+
+.resumo-emocional p {
+    font-size: 16px;
+    color: #6e5664;
+    line-height: 1.8;
+
+    max-width: 800px;
+    margin: 0 auto;
+}
+

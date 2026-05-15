@@ -11,7 +11,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="stylelogin.css">
+    <link rel="stylesheet" href="stylelogindiario.css">
 </head>
 <body>
     <button class="btn-voltar" onclick="window.location.href='home.html'">← Voltar</button>
@@ -22,10 +22,10 @@
 
         
         <div class="left">
-            <h1>Login</h1>
-            <h4 style="color: #B39EB5;">Acesse sua Dashboard</h4>
+            <h1>Acesse seu diário</h1>
+            <h4 style="color: #B39EB5;">Crie uma conta para acessar seu diário emocional</h4>
             <br>
-            <p>Bem vinda(o) de volta!</p>
+            
             
 
             <div class="campo">
@@ -35,10 +35,17 @@
 
             <div class="campo">
                 <label for="senha">Senha</label>
-                <input id="senha" type="password" placeholder="Mínimo 8 caracteres" />
+                <input id="senha" type="password"/>
             </div>
 
             <button onclick="Entrar()">Entrar</button>
+            
+
+<script>
+    function Entrar() {
+        window.location.href = "diariopage.html";
+    }
+</script>
 
             <p class="login-link"> 
                 Não possui conta? Junte-se a nós! <a href="cadastro.html"">Criar conta</a>
