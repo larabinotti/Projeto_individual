@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artigos</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/artigos.css">
+</head>
+
+<body>
+
+    <section class="hero">
+        <nav>
+            <ul>
+                <li><a href="home.html">Início</a></li>
+
+                <li><a href="logindiario.html">Seu diário</a></li>
+            </ul>
+        </nav>
+    </section>
+
+    <div class="topo">
+        <h1>Artigos & Reflexões</h1>
+        <p>Textos sobre ansiedade, autoconhecimento e saúde emocional.</p>
+    </div>
+
+    <div class="grid-artigos">
+
+        <a href="artigos1.html" class="card">
+            <div>
+                <span class="categoria">autoconhecimento</span>
+
+                <div class="titulo">
+                    Ansiedade na época dos vestibulares: como lidar?
+
+                    <button class="btn-favoritar" onclick="favoritar(1,this)">♡ Favoritar</button>
+                </div>
+            </div>
+
+            <div class="rodape">
+                <span>2 mai 2026</span>
+                <span class="ler">ler →</span>
+            </div>
+        </a>
+
+        <a href="artigo2.html" class="card">
+            <div>
+                <span class="categoria">relacionamentos</span>
+
+                <div class="titulo">
+                    A ansiedade que me fez permanecer em relações que me machucavam
+
+                    <button class="btn-favoritar" onclick="favoritar(2,this)">♡ Favoritar</button>
+                </div>
+            </div>
+
+            <div class="rodape">
+                <span>18 abr 2026</span>
+                <span class="ler">ler →</span>
+            </div>
+        </a>
+
+        <a href="artigos3.html" class="card">
+            <div>
+                <span class="categoria">autoconhecimento</span>
+
+                <div class="titulo">
+                    Ansiedade disfarçada de intuição: como lidar?
+                    <button class="btn-favoritar" onclick="favoritar(3,this)">♡ Favoritar</button>
+
+                </div>
+            </div>
+
+            <div class="rodape">
+                <span>5 abr 2026</span>
+                <span class="ler">ler →</span>
+            </div>
+        </a>
+
+        <a href="artigo4.html" class="card">
+            <div>
+                <span class="categoria">rotina</span>
+
+                <div class="titulo">
+                    Como o excesso de controle aumenta a ansiedade no dia a dia
+                    <button class="btn-favoritar" onclick="favoritar(4,this)">♡ Favoritar</button>
+                </div>
+            </div>
+
+            <div class="rodape">
+                <span>27 mar 2026</span>
+                <span class="ler">ler →</span>
+            </div>
+        </a>
+
+        <a href="artigo5.html" class="card">
+            <div>
+                <span class="categoria">emoções</span>
+
+                <div class="titulo">
+                    Nem todo pensamento merece ser ouvido
+
+                    <button class="btn-favoritar" onclick="favoritar(5,this)">♡ Favoritar</button>
+                </div>
+            </div>
+
+            <div class="rodape">
+                <span>14 mar 2026</span>
+                <span class="ler">ler →</span>
+            </div>
+        </a>
+
+        <a href="artigo6.html" class="card">
+            <div>
+                <span class="categoria">saúde mental</span>
+
+                <div class="titulo">
+                    O cansaço emocional que ninguém percebe
+                    <button class="btn-favoritar" onclick="favoritar(6,this)">♡ Favoritar</button>
+                </div>
+            </div>
+
+            <div class="rodape">
+                <span>8 mar 2026</span>
+                <span class="ler">ler →</span>
+            </div>
+        </a>
+
+    </div>
+
+
+    <script>
+        fetch('/favoritos/favoritar', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                fkUsuarioServer: usuario.id,
+                fkArtigoServer: fk_artigo
+            })
+        })
+            .then(res => res.json())
+            .then(() => alert('Artigo favoritado! 🌸'))
+            .catch(err => console.error(err));
+    </script>
+
+
+
+</body>
+
+</html>

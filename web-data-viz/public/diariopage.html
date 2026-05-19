@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Diário</title>
+
+    <link rel="stylesheet" href="css/stylediario.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <section class="diario-page">
+
+        <a href="home.html" class="voltar">← Voltar</a>
+
+        <div class="diario-container">
+
+            <div class="diario-texto">
+                <span class="tag">seu espaço</span>
+
+                <h1>Escreva seus pensamentos</h1>
+
+                <p>
+                    Um lugar calmo para registrar o que está passando pela sua mente
+                    e observar seus sentimentos com mais carinho.
+                </p>
+            </div>
+
+            <div class="diario-card">
+                <label for="ipt_pensamento">O que você está pensando agora?</label>
+
+                <textarea id="ipt_pensamento" placeholder="Digite aqui seus pensamentos..."></textarea>
+
+                <button onclick="salvarPensamento()">Salvar pensamento</button>
+
+                <div id="lista_pensamentos"></div>
+            </div>
+
+        </div>
+
+    </section>
+    <script>
+        const usuario = JSON.parse(localStorage.getItem('usuario'));
+
+        if (!usuario) {
+            alert('Você precisa estar logado para acessar o diário.');
+            window.location.href = 'loginpage.html';
+        }
+
+        function salvarPensamento() {
+            var conteudo = document.getElementById('ipt_pensamento').value.trim();
+            var classificacao = 'positivo';
+
+            if (conteudo == '') {
+                alert('Digite um pensamento antes de salvar.');
+                return;
+            }
+
+            var palavrasNegativas = [
+                'fracassar', 'não', 'nunca', 'medo', 'errar', 'impossível',
+                'péssima', 'péssimo', 'horrível', 'ruim', 'chata', 'chato',
+                'incompetente', 'idiota', 'chateada', 'chateado', 'triste', 'tristeza',
+                'ansiedade', 'ansiosa', 'ansioso', 'angústia', 'angustiada', 'angustiado',
+                'cansada', 'cansado', 'exausta', 'exausto', 'sozinha', 'sozinho',
+                'perdida', 'perdido', 'com medo', 'desesperada', 'desesperado',
+                'fracasso', 'culpa', 'culpada', 'culpado', 'envergonhada', 'envergonhado',
+                'inútil', 'incapaz', 'difícil', 'sofrendo', 'sofrimento', 'chorar',
+                'chorando', 'deprimida', 'deprimido', 'depressão', 'pânico',
+                'nervosa', 'nervoso', 'assustada', 'assustado', 'com raiva',
+                'frustrada', 'frustrado', 'frustração', 'irritada', 'irritado',
+                'magoada', 'magoado', 'decepcionada', 'decepcionado', 'decepcão',
+                'humilhada', 'humilhado', 'rejeitada', 'rejeitado', 'abandonada',
+                'abandonado', 'fracas', 'fraco', 'inferior', 'insegura', 'inseguro',
+                'confusa', 'confuso', 'perdendo', 'derrotada', 'derrotado', 'derrota',
+                'solitária', 'solitário', 'vazia', 'vazio', 'sem esperança',
+                'desmotivada', 'desmotivado', 'desanimada', 'desanimado', 'mal',
+                'horrendo', 'horrenda', 'medrosa', 'medroso', 'traumatizada', 'traumatizado'
+            ];
+
+            for (var i = 0; i < palavrasNegativas.length; i++) {
+                if (conteudo.toLowerCase().includes(palavrasNegativas[i])) {
+                    classificacao = 'negativo';
+                    break;
+                }
+            }
+
+            fetch('/entradas-diario/cadastrar', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    conteudoServer: conteudo,
+                    classificacaoServer: classificacao,
+                    fkUsuarioServer: usuario.id
+                })
+            })
+                .then(function (resposta) {
+                    alert('Pensamento salvo com sucesso!');
+                    document.getElementById('ipt_pensamento').value = '';
+                })
+                .catch(function (erro) {
+                    console.log("Erro: ", erro);
+                });
+        }
+    </script>
+
+</body>
+
+</html>

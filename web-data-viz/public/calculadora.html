@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Pensamentos</title>
+
+    <style>
+        body {
+            font-family: 'Optima', sans-serif;
+            background-color: #F5F1E9;
+            color: #2E2E2E;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input {
+            width: 70%;
+            padding: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #e5c7c5;
+            border: none;
+            cursor: pointer;
+        }
+
+        ul {
+            text-align: left;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="titulo">Entre o Agora e o Talvez</h1>
+
+        <style>
+            .titulo {
+                font-family: Optima, Candara, "Segoe UI", sans-serif;
+            }
+        </style>
+        <p>Digite seus pensamentos:</p>
+
+        <input id="inputPensamento" placeholder="Ex: vou fracassar">
+        <button onclick="adicionar()">Adicionar</button>
+
+        <h3>Seus pensamentos:</h3>
+        <ul id="lista"></ul>
+
+        <button onclick="analisar()">Analisar</button>
+
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        const usuario = JSON.parse(localStorage.getItem('usuario'));
+        console.log('usuario:', usuario)
+        let pensamentos = [];
+
+        let palavrasNegativas = [
+            'fracassar', 'não', 'nunca', 'medo', 'errar', 'impossível',
+            'péssima', 'péssimo', 'horrível', 'ruim', 'chata', 'chato',
+            'incompetente', 'idiota', 'chateada', 'chateado', 'triste', 'tristeza',
+            'ansiedade', 'ansiosa', 'ansioso', 'angústia', 'angustiada', 'angustiado',
+            'cansada', 'cansado', 'exausta', 'exausto', 'sozinha', 'sozinho',
+            'perdida', 'perdido', 'com medo', 'desesperada', 'desesperado',
+            'fracasso', 'culpa', 'culpada', 'culpado', 'envergonhada', 'envergonhado',
+            'inútil', 'incapaz', 'difícil', 'sofrendo', 'sofrimento', 'chorar',
+            'chorando', 'deprimida', 'deprimido', 'depressão', 'pânico',
+            'nervosa', 'nervoso', 'assustada', 'assustado', 'com raiva',
+            'frustrada', 'frustrado', 'frustração', 'irritada', 'irritado',
+            'magoada', 'magoado', 'decepcionada', 'decepcionado', 'decepcão',
+            'humilhada', 'humilhado', 'rejeitada', 'rejeitado', 'abandonada',
+            'abandonado', 'fracas', 'fraco', 'inferior', 'insegura', 'inseguro',
+            'confusa', 'confuso', 'perdendo', 'derrotada', 'derrotado', 'derrota',
+            'solitária', 'solitário', 'vazia', 'vazio', 'sem esperança',
+            'desmotivada', 'desmotivado', 'desanimada', 'desanimado', 'mal',
+            'horrendo', 'horrenda', 'medrosa', 'medroso', 'traumatizada', 'traumatizado'
+        ];
+
+        function adicionar() {
+            let input = document.getElementById('inputPensamento');
+            let texto = input.value.trim();
+
+            if (texto === '') {
+                alert('Digite algo!');
+                return;
+            }
+
+            pensamentos.push(texto);
+            atualizarLista();
+            input.value = '';
+        }
+
+        function atualizarLista() {
+            let lista = document.getElementById('lista');
+            lista.innerHTML = '';
+            pensamentos.forEach(p => {
+                lista.innerHTML += `<li>${p}</li>`;
+            });
+        }
+
+        function analisar() {
+            if (pensamentos.length === 0) {
+                alert('Adicione pelo menos um pensamento.');
+                return;
+            }
+
+            let negativos = 0;
+
+            pensamentos.forEach(frase => {
+                for (let palavra of palavrasNegativas) {
+                    if (frase.toLowerCase().includes(palavra)) {
+                        negativos++;
+                        break;
+                    }
+                }
+            });
+
+            let positivos = pensamentos.length - negativos;
+            let mensagem = negativos > positivos
+                ? "Você está mais no 'talvez' do que no 'agora'"
+                : "Você está mais no 'agora' do que no 'talvez'";
+
+            document.getElementById('resultado').innerHTML = `
+            <p>Pensamentos negativos: ${negativos}</p>
+            <p>Pensamentos positivos: ${positivos}</p>
+            <b>${mensagem}</b>
+        `;
+
+            if (usuario) {
+                fetch('/entradas-calculadora/cadastrar', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        conteudoServer: pensamentos.join(', '),
+                        classificacaoServer: negativos > positivos ? 'negativo' : 'positivo',
+                        fkUsuarioServer: usuario.id
+                    })
+                });
+            }
+        }
+    </script>
+
+</body>
+
+</html>

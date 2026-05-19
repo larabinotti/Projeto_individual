@@ -1,0 +1,14 @@
+var database = require("../database/config")
+
+function cadastrar(conteudo, classificacao, fkUsuario) {
+    console.log("ACESSEI O ENTRADA CALCULADORA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", conteudo, classificacao, fkUsuario);
+    var instrucaoSql = `
+        INSERT INTO entrada_calculadora (conteudo, classificacao, criado_em, fk_usuario) VALUES ('${conteudo}', '${classificacao}', NOW(), '${fkUsuario}');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+module.exports = {
+    cadastrar
+};

@@ -1,0 +1,189 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.wrap {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    min-height: 100vh;
+    align-items: stretch;
+    background-color: #E9E1D8;
+    overflow: hidden;
+}
+
+.side-image {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.left-side {
+    background-image: url('lado_direito2.png');
+}
+
+.right-side {
+    background-image: url('lado_direito2.png');
+}
+
+.left {
+    background: #eeebe8;
+    padding: 60px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    border-radius: 40px;
+    margin: 20px 0;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.left h1,
+.left > p,
+.left .campo,
+.left button,
+.left .login-link {
+    width: 100%;
+    max-width: 350px;
+}
+
+.left h1 {
+    font-size: 38px;
+    color: #3d2e38;
+    margin-bottom: 6px;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.left > p {
+    font-size: 14px;
+    color: #9e8a98;
+    margin-bottom: 36px;
+}
+
+.campo {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #7a6475;
+    margin-bottom: 6px;
+    letter-spacing: 0.09em;
+}
+
+input {
+    width: 100%;
+    height: 44px;
+    border: 1.5px solid #d4c4cc;
+    border-radius: 10px;
+    background: #fff;
+    padding: 0 16px;
+    font-size: 14px;
+    color: #3d2e38;
+    outline: none;
+    transition: all 0.2s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+input:focus {
+    transform: scale(1.02);
+    border-color: #7a6475;
+    box-shadow: 0 0 0 4px rgba(122, 100, 117, 0.15);
+}
+
+button {
+    width: 100%;
+    height: 50px;
+    background: #7a6475;
+    color: #eeebe8;
+    border: none;
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+
+    cursor: pointer;
+    margin-top: 10px;
+    letter-spacing: 0.05em;
+    transition: all 0.25s ease;
+}
+
+button:hover {
+    background: #5e4d59;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.login-link {
+    margin-top: 24px;
+    font-size: 13.5px;
+    color: #9e8a98;
+}
+
+.login-link a {
+    color: #7a6475;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+.btn-voltar {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+
+    width: auto;
+    height: auto;
+    margin-top: 0;
+
+    background: none;
+    border: none;
+    color: #3d2e38;
+
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+
+    outline: none;
+    z-index: 10;
+}
+
+.btn-voltar:hover {
+    text-decoration: underline;
+    background: none;
+    transform: none;
+}
+
+.btn-voltar:active {
+    background: none;
+    transform: none;
+}
